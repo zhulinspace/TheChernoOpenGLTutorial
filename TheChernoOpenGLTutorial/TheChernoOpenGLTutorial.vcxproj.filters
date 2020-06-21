@@ -471,6 +471,7 @@
     <None Include="render\vender\glm\gtx\wrap.inl">
       <Filter>头文件</Filter>
     </None>
+    <None Include="res\shaders\light.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="render\GLErrorMessage.h">

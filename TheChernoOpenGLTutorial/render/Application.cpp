@@ -19,8 +19,17 @@
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
 
+#include <ft2build.h>
+#include FT_FREETYPE_H  
+
 int main(void)
 {
+
+	/*FT_Library ft;
+	if (FT_Init_FreeType(&ft))
+		std::cout << "ERROR::FREETYPE: Could not init FreeType Library" << std::endl;
+*/
+
 	GLFWwindow* window;
 
 	/* Initialize the library */
@@ -54,77 +63,91 @@ int main(void)
 	{
 
 		float vertices[] = {
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+			// positions          // normals           // texture coords
+			-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+			 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
+			 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+			 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+			-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
+			-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
 
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+			-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+			 0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
+			 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
+			 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
+			-0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
+			-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+			-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+			-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+			-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+			-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+			-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+			-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
 
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+			 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+			 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+			 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+			 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+			 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+			 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
 
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+			-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
+			 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
+			 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+			 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+			-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
+			-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
 
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+			-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
+			 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
+			 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+			 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+			-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+			-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
 		};
+
+		
 
 		VertexArray va;
 		VertexBuffer vb(vertices, sizeof(vertices),36);
 		VertexBufferLayout layout;
-		layout.Push<float>(3);
-		layout.Push<float>(2);
+		layout.Push<float>(3);//position
+		layout.Push<float>(3);//normal
+		layout.Push<float>(2);//texturecoord
 		va.AddBuffer(vb, layout);
+
+		VertexArray lightVa;
+		VertexBufferLayout lightLayout(8*sizeof(float));
+		lightLayout.Push<float>(3);
+		lightVa.AddBuffer(vb, lightLayout);
 
 		glm::mat4 proj = glm::mat4(1.0f);
 		proj = glm::perspective(glm::radians(45.0f), (float)SrceenWidth / (float)ScreenHeight, 0.1f, 100.0f);
 
-		//test
-		glm::mat4 orthoproj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
-		glm::vec4 vp(-0.5f, -0.5f, 0.0f, 1.0f);
-		glm::vec4 result = orthoproj * vp;
-
-		
+		Shader lightShader("res/shaders/light.shader");
 		Shader shader("res/shaders/Basic.shader");
 		shader.Bind();
+		//transformation
 		shader.SetUniformMat4f("u_Projection", proj);
+		//textures
+		Texture diffuseMap("res/textures/container2.png");
+		Texture specularMap("res/textures/container2_specular.png");
+		diffuseMap.Bind(0);
+		specularMap.Bind(1);
+		shader.SetUniform1i("u_material.diffuse", 0);
+		shader.SetUniform1i("u_material.specular", 1);
 
-		Texture texture("res/textures/wall.jpg");
+		/*Texture texture("res/textures/wall.jpg");
 		texture.Bind();
-		shader.SetUniform1i("u_Texture", 0);
+		shader.SetUniform1i("u_Texture", 0);*/
 
 		//unbind
 		va.Unbind();
+		lightVa.Unbind();
 		vb.Unbind();
 		shader.Unbind();
+		lightShader.Unbind();
 
 		Renderer renderer;
 
@@ -147,20 +170,41 @@ int main(void)
 			ImGui_ImplGlfw_NewFrame();
 			ImGui::NewFrame();
 
-			
 			glm::mat4 model = glm::mat4(1.0f);
 			glm::mat4 view = glm::mat4(1.0f);
 		
 			model = glm::rotate(model, glm::radians(-angel), glm::vec3(0.5f, 1.0f, 0.0f));
 			view = glm::translate(view, translation);
 			
+			glm::vec3 lightPos(0.8f, 0.2f, 2.0f);
+			glm::vec3 ViewPos(0.0f,0.0f,3.0f);
 
-			shader.Bind();
-			shader.SetUniformMat4f("u_Model", model);
-			shader.SetUniformMat4f("u_View", view);
+			{
+				
+				shader.Bind();
+				shader.SetUniformVec3f("u_light.position",lightPos);
+				shader.SetUniformVec3f("u_viewPos", ViewPos);
+				//light properties
+				shader.SetUniformVec3f("u_light.ambient", 0.2f, 0.2f, 0.2f);
+				shader.SetUniformVec3f("u_light.diffuse", 0.5f, 0.5f, 0.5f);
+				shader.SetUniformVec3f("u_light.specular", 1.0f, 1.0f, 1.0f);
+				//material 
+				shader.SetUniform1f("u_material.shininess", 64.0f);
+				shader.SetUniformMat4f("u_Model", model);
+				shader.SetUniformMat4f("u_View", view);
+				renderer.Draw(va, vb, shader);
+			}
 
-
-			renderer.Draw(va,vb, shader);
+			{
+				lightShader.Bind();
+				lightShader.SetUniformMat4f("projection", proj);
+				lightShader.SetUniformMat4f("view", view);
+				model = glm::mat4(1.0f);
+				model = glm::translate(model, lightPos);
+				model = glm::scale(model, glm::vec3(0.2f));
+				lightShader.SetUniformMat4f("model", model);
+				renderer.Draw(lightVa, vb, lightShader);
+			}
 
 			{
 				ImGui::SliderFloat("angel", &angel, -180.0f, 180.0f);      
