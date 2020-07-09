@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="render\Application.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="render\GLErrorMessage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -34,9 +31,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="render\Shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="render\Texure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="render\vender\stb_image\stb_image.cpp">
@@ -58,6 +52,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="render\vender\imgui\imgui_widgets.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="models\mesh.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="models\model.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="render\Texure.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="render\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -472,6 +478,8 @@
       <Filter>头文件</Filter>
     </None>
     <None Include="res\shaders\light.shader" />
+    <None Include="res\shaders\raw.shader" />
+    <None Include="res\shaders\object.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="render\GLErrorMessage.h">
@@ -493,9 +501,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="render\Shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="render\Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="render\vender\stb_image\stb_image.h">
@@ -1369,6 +1374,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="render\vender\imgui\imstb_truetype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="models\mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="models\model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="render\Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

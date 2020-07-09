@@ -19,6 +19,8 @@
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
 
+#include "Camera.h"
+
 #include <ft2build.h>
 #include FT_FREETYPE_H  
 
@@ -195,7 +197,7 @@ int main(void)
 				renderer.Draw(va, vb, shader);
 			}
 
-			{
+			/*{
 				lightShader.Bind();
 				lightShader.SetUniformMat4f("projection", proj);
 				lightShader.SetUniformMat4f("view", view);
@@ -204,7 +206,7 @@ int main(void)
 				model = glm::scale(model, glm::vec3(0.2f));
 				lightShader.SetUniformMat4f("model", model);
 				renderer.Draw(lightVa, vb, lightShader);
-			}
+			}*/
 
 			{
 				ImGui::SliderFloat("angel", &angel, -180.0f, 180.0f);      
