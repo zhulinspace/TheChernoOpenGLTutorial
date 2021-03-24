@@ -63,7 +63,10 @@
     <ClCompile Include="render\Texure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="render\Application.cpp">
+    <ClCompile Include="render\CameraTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="render\Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1383,6 +1386,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="render\Texture.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="render\Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

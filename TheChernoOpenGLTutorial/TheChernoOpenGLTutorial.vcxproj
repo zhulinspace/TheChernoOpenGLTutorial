@@ -82,7 +82,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\GLFW\lib-vc2017;$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\Win32;$(SolutionDir)Dependencies\freetype\win32;$(SolutionDir)Dependencies\Assimp\lib\x86</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;freetype.lib;glu32.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>dbghelp.lib;glfw3.lib;glew32s.lib;opengl32.lib;freetype.lib;glu32.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,7 +133,8 @@
   <ItemGroup>
     <ClCompile Include="models\mesh.cpp" />
     <ClCompile Include="models\model.cpp" />
-    <ClCompile Include="render\Application.cpp" />
+    <ClCompile Include="render\Camera.cpp" />
+    <ClCompile Include="render\CameraTest.cpp" />
     <ClCompile Include="render\GLErrorMessage.cpp" />
     <ClCompile Include="render\IndexBuffer.cpp" />
     <ClCompile Include="render\Renderer.cpp" />
@@ -294,6 +295,7 @@
   <ItemGroup>
     <ClInclude Include="models\mesh.h" />
     <ClInclude Include="models\model.h" />
+    <ClInclude Include="render\Camera.h" />
     <ClInclude Include="render\GLErrorMessage.h" />
     <ClInclude Include="render\IndexBuffer.h" />
     <ClInclude Include="render\Renderer.h" />
